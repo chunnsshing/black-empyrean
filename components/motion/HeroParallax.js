@@ -9,7 +9,7 @@ export default function HeroParallax({ children }) {
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = 0;
-        if (ref.current) ref.current.style.transform = `translateY(${window.scrollY * 0.18}px)`;
+        if (ref.current) ref.current.style.transform = `translateY(${window.scrollY * 0.12}px)`;
       });
     };
     window.addEventListener('scroll', onScroll, { passive: true });

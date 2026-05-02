@@ -24,11 +24,11 @@ const CATEGORIES = ['All', 'AI Agents', 'Operations', 'Analytics', 'Customer', '
 // TEMPLATE DATA — replace with real products when ready to ship.
 const PRODUCTS = [
   {
-    slug: 'product-alpha',
-    name: 'Product Alpha',
-    tagline: '[Placeholder] An AI-powered tool for automating repetitive team workflows.',
+    slug: 'monday',
+    name: 'Monday',
+    tagline: 'Your business, summarised overnight. An AI briefing in your inbox every Monday morning.',
     category: 'AI Agents',
-    version: 'v0.1 · Beta',
+    version: 'v1.0 · Available',
   },
   {
     slug: 'product-beta',

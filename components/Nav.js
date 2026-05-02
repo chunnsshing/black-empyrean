@@ -11,7 +11,18 @@ const NAV_ITEMS = [
 ];
 
 function LogoMark() {
-  return <span className="logo-mark" aria-hidden />;
+  const [imgError, setImgError] = useState(false);
+  if (imgError) return <span className="logo-mark" aria-hidden />;
+  return (
+    <img
+      src="/main_logo.png"
+      alt="The Empyrean"
+      className="logo-img"
+      onError={() => setImgError(true)}
+      width={28}
+      height={28}
+    />
+  );
 }
 
 export default function Nav() {
@@ -42,7 +53,6 @@ export default function Nav() {
             <span className="nav-brand-text">The Empyrean</span>
             <span className="nav-status" aria-hidden>
               <span className="pulse" />
-              <span>SYS · ONLINE</span>
             </span>
           </Link>
 

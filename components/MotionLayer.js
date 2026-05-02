@@ -121,11 +121,10 @@ function SideRail() {
   const lit = Math.round((pct / 100) * (ticks - 1));
   return (
     <div className="side-rail" aria-hidden>
-      <span>EMPYREAN</span>
       {Array.from({ length: ticks }).map((_, i) =>
         <span key={i} className={'tick' + (i <= lit ? ' lit' : '')} />
       )}
-      <span className="label-rotate">{Math.round(pct)}% / SCROLL</span>
+      <span className="label-rotate">{Math.round(pct)}%</span>
     </div>
   );
 }

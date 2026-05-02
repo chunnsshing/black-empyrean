@@ -5,7 +5,6 @@ import Reveal from '@/components/motion/Reveal';
 import Tilt from '@/components/motion/Tilt';
 import Counter from '@/components/motion/Counter';
 import HeroParallax from '@/components/motion/HeroParallax';
-import LiveTicker from '@/components/motion/LiveTicker';
 import SectionHead from '@/components/ui/SectionHead';
 
 const ROTATING_WORDS = ['AI Agents', 'ERP Systems', 'Data Platforms', 'Digital Products', 'Real Results'];
@@ -86,11 +85,20 @@ const PROCESS_ICONS = {
   Deploy:   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M5 12l7-7 7 7" /><path d="M12 5v14" /></svg>,
 };
 
-export default function HomeClient() {
+export default function HomeClient({ latestInsight }) {
   return (
     <>
       <div className="announce">
-        <strong>NEW</strong> · AI Agents v2 · Custom-trained for Southeast Asia · Now available →
+        {latestInsight ? (
+          <>
+            <strong>LATEST</strong> ·{' '}
+            <Link href={`/insights/${latestInsight.slug}`}>
+              {latestInsight.title} →
+            </Link>
+          </>
+        ) : (
+          <><strong>NEW</strong> · AI Agents v2 · Custom-trained for Southeast Asia · Now available →</>
+        )}
       </div>
 
       <section className="hero">
@@ -136,19 +144,19 @@ export default function HomeClient() {
               <div className="hero-readout">
                 <div>
                   <div className="label">/ Region</div>
-                  <div className="val live">SEA + AU</div>
+                  <div className="val">SEA + AU</div>
                 </div>
                 <div>
-                  <div className="label">/ Agents Live</div>
-                  <div className="val live"><LiveTicker base={10} jitter={1} format={(n) => `${n} / Production`} /></div>
+                  <div className="label">/ Projects Delivered</div>
+                  <div className="val">20+</div>
                 </div>
                 <div>
-                  <div className="label">/ Avg Time-to-Pilot</div>
-                  <div className="val live"><LiveTicker base={21} jitter={2} intervalMs={3200} format={(n) => `≈ ${n} Days`} /></div>
+                  <div className="label">/ Avg Time-to-Ship</div>
+                  <div className="val">≈ 3 Weeks</div>
                 </div>
                 <div>
-                  <div className="label">/ Languages Supported</div>
-                  <div className="val live">EN · MS · ID · ZH</div>
+                  <div className="label">/ Languages</div>
+                  <div className="val">EN · MS · ID · ZH</div>
                 </div>
               </div>
             </Reveal>
@@ -169,8 +177,8 @@ export default function HomeClient() {
           />
           <div className="grid-4">
             {SERVICES.map((s, i) => (
-              <Reveal key={s.name} stagger={Math.min(i + 1, 4)}>
-                <Tilt className="card card-accent glow-card" max={5}>
+              <Reveal key={s.name} stagger={Math.min(i + 1, 4)} style={{ display: 'flex', flexDirection: 'column' }}>
+                <Tilt className="card card-accent glow-card" max={5} style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ width: 40, height: 40, borderRadius: 10, background: 'var(--glass-2)', border: '1px solid var(--hairline)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--periwinkle)' }}>
                       {s.icon}

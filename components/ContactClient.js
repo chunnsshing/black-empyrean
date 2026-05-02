@@ -154,9 +154,19 @@ export default function ContactClient() {
             <div className="contact-side">
               {[
                 {
-                  label: 'EMAIL',
-                  val: 'contact@theempyrean.org',
+                  label: 'GENERAL',
+                  val: <a href="mailto:hello@theempyrean.org" style={{ color: 'var(--periwinkle)' }}>hello@theempyrean.org</a>,
                   icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M3 7l9 6 9-6" /><rect x="3" y="5" width="18" height="14" rx="2" /></svg>,
+                },
+                {
+                  label: 'PROJECT ENQUIRIES',
+                  val: <a href="mailto:contact@theempyrean.org" style={{ color: 'var(--periwinkle)' }}>contact@theempyrean.org</a>,
+                  icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>,
+                },
+                {
+                  label: 'BILLING & FINANCE',
+                  val: <a href="mailto:finance@theempyrean.org" style={{ color: 'var(--periwinkle)' }}>finance@theempyrean.org</a>,
+                  icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><rect x="2" y="6" width="20" height="14" rx="2" /><path d="M2 10h20M6 15h4" /></svg>,
                 },
                 {
                   label: 'RESPONSE TIME',
@@ -171,7 +181,7 @@ export default function ContactClient() {
                 {
                   label: 'PREFER TO TALK?',
                   val: "Mention \"discovery call\" in your message and we'll skip straight to a 30-minute conversation.",
-                  icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>,
+                  icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M3 11l19-9-9 19-2-8-8-2z" /></svg>,
                   small: true,
                 },
               ].map((row) => (

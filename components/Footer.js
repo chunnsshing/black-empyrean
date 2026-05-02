@@ -63,11 +63,12 @@ export default function Footer() {
           </div>
 
           <div className="foot-col">
-            <h5>Documents</h5>
+            <h5>Get in Touch</h5>
             <ul>
-              <li><a href="#">Research Papers</a></li>
-              <li><a href="#">Privacy Statement</a></li>
-              <li><a href="#">Terms of Use</a></li>
+              <li><a href="mailto:hello@theempyrean.org">hello@theempyrean.org</a></li>
+              <li><a href="mailto:press@theempyrean.org">press@theempyrean.org</a></li>
+              <li><a href="mailto:spark@theempyrean.org">spark@theempyrean.org</a></li>
+              <li><a href="mailto:finance@theempyrean.org">finance@theempyrean.org</a></li>
             </ul>
           </div>
         </div>

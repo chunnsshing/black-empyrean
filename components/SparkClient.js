@@ -24,9 +24,47 @@ const PROGRAMS = [
   },
 ];
 
+const FAQ_ITEMS = [
+  {
+    q: 'Who can apply?',
+    a: 'Students from any school or university in Southeast Asia. Most of our hackathon participants are undergraduates, but we run workshops for secondary-school students too.',
+  },
+  {
+    q: 'Do I need prior coding experience?',
+    a: "For most programmes, no. Curiosity and willingness to build are enough. Some advanced hackathons have prerequisites — we'll always say so on the application page.",
+  },
+  {
+    q: 'Is there a fee?',
+    a: 'No. Spark* programmes are free for participating students. Costs are covered by The Empyrean and our partner organisations.',
+  },
+  {
+    q: 'What languages are programmes run in?',
+    a: 'Primarily English, with bilingual support (Bahasa Malaysia, Mandarin) at specific events depending on the host institution.',
+  },
+  {
+    q: 'Can my school or organisation partner with Spark*?',
+    a: (
+      <>
+        Yes. We collaborate with schools, universities, and community groups across the region.
+        Reach out via the <Link href="/contact">contact page</Link> and tell us a bit about your students.
+      </>
+    ),
+  },
+  {
+    q: 'How often do you run events?',
+    a: (
+      <>
+        A few major hackathons per year, plus rolling workshops and tech talks.
+        Follow our <Link href="/insights">Insights page</Link> or get in touch to be added to the announcement list.
+      </>
+    ),
+  },
+];
+
 export default function SparkClient() {
   return (
     <>
+      {/* Hero */}
       <section className="hero">
         <div className="hero-orbit" aria-hidden>
           <span className="satellite" /><span className="satellite s2" />
@@ -50,6 +88,7 @@ export default function SparkClient() {
         </div>
       </section>
 
+      {/* Mission */}
       <section className="section">
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 64, alignItems: 'start' }}>
           <p className="eyebrow">OUR MISSION</p>
@@ -64,6 +103,27 @@ export default function SparkClient() {
         </div>
       </section>
 
+      {/* Why Spark* */}
+      <section className="section">
+        <div className="container">
+          <SectionHead
+            eyebrow="WHY SPARK*"
+            title={<>It started with <span className="serif-italic">one workshop.</span></>}
+          />
+          <Reveal kind="up" stagger={1}>
+            <div style={{ maxWidth: '65ch' }}>
+              <p style={{ color: 'var(--ink-2)', fontSize: 17, lineHeight: 1.7, margin: '0 0 22px' }}>
+                When we started The Empyrean, the engineers we wanted to hire didn't exist yet — not because there wasn't talent in the region, but because there weren't enough places for that talent to do real work before graduating. Most students we met had built nothing larger than a class assignment.
+              </p>
+              <p style={{ color: 'var(--ink-2)', fontSize: 17, lineHeight: 1.7, margin: 0 }}>
+                Spark* is our answer. It's not charity, and it's not recruiting. It's the simple belief that if we want to build serious technology in Southeast Asia, we have to invest in the people who'll build it next. So we run hackathons, teach in classrooms, and bring practitioners into rooms where students can ask them <span className="serif-italic">anything</span>.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* What We Do */}
       <section className="section">
         <div className="container">
           <SectionHead
@@ -88,6 +148,7 @@ export default function SparkClient() {
         </div>
       </section>
 
+      {/* Collaborations */}
       <section className="section">
         <div className="container">
           <SectionHead
@@ -115,6 +176,7 @@ export default function SparkClient() {
         </div>
       </section>
 
+      {/* Join Spark* */}
       <section className="section">
         <div className="container">
           <SectionHead
@@ -127,6 +189,12 @@ export default function SparkClient() {
               <p className="eyebrow">FOR STUDENTS</p>
               <h3>Ready to build something real?</h3>
               <p>Apply to our hackathons, workshops, and mentorship programmes. No prior experience required — just curiosity.</p>
+              <p style={{ fontSize: 13, color: 'var(--ink-3)', margin: '-4px 0 0' }}>
+                Questions?{' '}
+                <a href="mailto:spark@theempyrean.org" style={{ color: 'var(--periwinkle)' }}>
+                  spark@theempyrean.org
+                </a>
+              </p>
               <Link href="/contact" className="btn">Apply now <span className="btn-arrow">→</span></Link>
             </div>
             <div className="dark-card">
@@ -134,8 +202,37 @@ export default function SparkClient() {
               <p className="eyebrow">FOR ORGANISATIONS</p>
               <h3>Bring Spark* to your school or institution.</h3>
               <p>We collaborate with schools, universities, and community organisations across Southeast Asia. Let's build something with your students.</p>
+              <p style={{ fontSize: 13, color: 'var(--ink-3)', margin: '-4px 0 0' }}>
+                Partnership enquiries:{' '}
+                <a href="mailto:spark@theempyrean.org" style={{ color: 'var(--periwinkle)' }}>
+                  spark@theempyrean.org
+                </a>
+              </p>
               <Link href="/contact" className="btn">Partner with us <span className="btn-arrow">→</span></Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section">
+        <div className="container">
+          <SectionHead
+            eyebrow="FREQUENTLY ASKED"
+            title={<>Questions, <span className="serif-italic">answered.</span></>}
+          />
+          <div className="faq-list">
+            {FAQ_ITEMS.map((item, i) => (
+              <Reveal key={i} stagger={Math.min(i + 1, 4)}>
+                <details className="faq-item">
+                  <summary>
+                    {item.q}
+                    <span className="faq-icon" aria-hidden>+</span>
+                  </summary>
+                  <div className="faq-body">{item.a}</div>
+                </details>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

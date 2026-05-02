@@ -7,17 +7,27 @@ import HeroParallax from '@/components/motion/HeroParallax';
 import SectionHead from '@/components/ui/SectionHead';
 import Placeholder from '@/components/ui/Placeholder';
 
-const AI_PRODUCTS = [
-  { name: 'EmonyAI',       desc: 'Emotion-aware customer support agent.',     full: 'Tunes responses to customer sentiment in real-time. Trained on SEA service-industry transcripts.' },
-  { name: 'Trown',         desc: 'Procurement intelligence for SMEs.',         full: 'Vendor scoring, contract anomaly detection, and procurement spend analytics — out of the box.' },
-  { name: 'Senti-an',      desc: 'Multi-language sentiment & review monitor.', full: 'Tracks brand mentions in Bahasa, English, Mandarin, and Tamil across socials and reviews.' },
-  { name: 'OrganAIzer',    desc: 'AI ops co-pilot for back-office teams.',     full: 'Schedules, summarises, and routes work across calendars, email, and ticketing systems.' },
-  { name: 'Wednesday',     desc: 'Weekly insights, automated.',                full: 'Auto-generates the executive Monday-morning report from your operational data, every Sunday night.' },
-  { name: 'AIffinity',     desc: 'Customer segmentation & next-best-action.',  full: 'Clusters customers, predicts churn, and suggests the next conversation to have.' },
-  { name: 'FlowLytics',    desc: 'Process mining for messy operations.',       full: "Discovers your real workflows from system logs and surfaces bottlenecks you didn't know existed." },
-  { name: 'PulseCore',     desc: 'Real-time KPI heartbeat.',                   full: 'Streams operational KPIs into a single live view. Alerts when reality drifts from plan.' },
-  { name: 'LogisticsWise', desc: 'Fleet routing & dispatch optimisation.',     full: 'Dynamic route planning, driver scheduling, and load balancing for delivery fleets.' },
-  { name: 'Office.home',   desc: 'Internal AI assistant for hybrid teams.',    full: "A private, company-aware assistant that answers HR, IT, and ops questions without leaving your data." },
+const METHODOLOGY_STEPS = [
+  {
+    num: '01',
+    title: 'Discover',
+    desc: 'We sit with your team, walk the floor, read the spreadsheets. No solutions until we understand the actual bottleneck.',
+  },
+  {
+    num: '02',
+    title: 'Frame',
+    desc: 'One page. The problem, the constraints, what success looks like, and what we\'re explicitly not solving. Signed off before a line of code.',
+  },
+  {
+    num: '03',
+    title: 'Build in slices',
+    desc: 'Working software every two weeks, in front of real users. We\'d rather ship something narrow that runs than something broad that demos.',
+  },
+  {
+    num: '04',
+    title: 'Hand over, don\'t disappear',
+    desc: 'Documentation, training, and a 90-day support window. Your team owns it; we stay reachable.',
+  },
 ];
 
 const PROJECTS = [
@@ -27,6 +37,14 @@ const PROJECTS = [
     built: 'Custom ERP with real-time production tracking, inventory management, and automated reporting across three facilities.',
     problem: 'Manual paperwork between shifts. Reporting blind spots. Inventory discrepancies discovered too late to act on.',
     outcome: 'Live operational view across all sites. Reporting time cut from days to minutes. Inventory variance reduced to under 1%.',
+    timeline: '6-month engagement · 2023',
+    team: '2 engineers · 1 business analyst · embedded with client ops team',
+    stack: 'Odoo · Python · PostgreSQL · React dashboard · AWS',
+    scale: '~800 production records tracked daily across 3 facilities',
+    quote: {
+      text: 'We used to run end-of-day reporting the next morning. Now it\'s live. That alone changed how our supervisors work.',
+      attribution: 'Operations Director, manufacturing group',
+    },
     tags: ['ERP', 'Manufacturing', 'Automation'],
   },
   {
@@ -35,14 +53,30 @@ const PROJECTS = [
     built: 'Fleet tracking with automated scheduling, billing reconciliation, and a mobile driver app — connected to existing finance and CRM.',
     problem: 'Spreadsheet-based fleet management. Drivers, dispatch, and billing all running disconnected systems.',
     outcome: 'Scheduling time cut dramatically. Billing errors eliminated. Driver compliance up; fuel cost per delivery down.',
+    timeline: '4-month engagement · 2024',
+    team: '2 engineers · 1 designer · embedded with client ops lead',
+    stack: 'Next.js · PostgreSQL · Python services · AWS',
+    scale: '~300 active vehicles tracked daily',
+    quote: {
+      text: 'The billing alone used to take two people a full day. It\'s automated now — they do other work.',
+      attribution: 'Operations Manager, regional logistics firm',
+    },
     tags: ['Logistics', 'Fleet Management', 'Mobile'],
   },
   {
-    name: 'Multi-Industry',
-    sector: 'Several markets · Mixed engagements',
+    name: 'Retainer Engagements',
+    sector: 'Several markets · Ongoing retainers',
     built: 'AI development, web and app builds, ERP customisation, and data dashboards — across retail, F&B, education, and professional services.',
     problem: 'Different problems, different industries — but the same need for senior-led delivery on a junior-team budget.',
     outcome: 'Long-term retainer relationships. Each engagement delivered on schedule. Many clients now in their second or third project.',
+    timeline: 'Ongoing · since 2022',
+    team: 'Variable · typically 2–4 practitioners per client',
+    stack: 'Mixed stack — matched to client environment per engagement',
+    scale: '8+ active retainer clients across 4 markets',
+    quote: {
+      text: 'They don\'t just deliver and disappear. Every time we have a new problem they already understand our business.',
+      attribution: 'Head of Technology, professional services firm',
+    },
     tags: ['AI', 'ERP', 'Web & App', 'Data', 'Multi-market'],
   },
 ];
@@ -52,25 +86,6 @@ const EXPERTISE_TAGS = [
   'Data Analytics', 'UI/UX Design', 'Cloud Infrastructure',
   'Process Automation', 'NLP', 'End-User Training',
 ];
-
-function ProductCard({ p, idx }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <Reveal stagger={(idx % 4) + 1}>
-      <Tilt className="product-card glow-card" max={4}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        <Placeholder label={p.name + ' · preview'} ratio="16/10" />
-        <div className="body">
-          <h3>{p.name}</h3>
-          <p className="desc">{hovered ? p.full : p.desc}</p>
-          <span className="more">Learn More →</span>
-        </div>
-      </Tilt>
-    </Reveal>
-  );
-}
 
 function ProjectCard({ p }) {
   const [open, setOpen] = useState(false);
@@ -87,14 +102,24 @@ function ProjectCard({ p }) {
           </div>
         </div>
       </div>
-      <button className="toggle" onClick={() => setOpen(!open)}>
+      <button className="toggle" onClick={() => setOpen(!open)} aria-expanded={open}>
         <span>{open ? 'Hide details' : 'See what we did'}</span>
-        <span style={{ transition: 'transform 0.3s', transform: open ? 'rotate(180deg)' : 'none' }}>↓</span>
+        <span aria-hidden style={{ transition: 'transform 0.3s', transform: open ? 'rotate(180deg)' : 'none' }}>↓</span>
       </button>
       <div className="body-extra">
         <div className="row"><span className="label">Built</span><span className="val">{p.built}</span></div>
         <div className="row"><span className="label">Problem</span><span className="val">{p.problem}</span></div>
         <div className="row"><span className="label">Outcome</span><span className="val">{p.outcome}</span></div>
+        <div className="row"><span className="label">Timeline</span><span className="val">{p.timeline}</span></div>
+        <div className="row"><span className="label">Team</span><span className="val">{p.team}</span></div>
+        <div className="row"><span className="label">Stack</span><span className="val">{p.stack}</span></div>
+        <div className="row"><span className="label">Scale</span><span className="val">{p.scale}</span></div>
+        <div className="row" style={{ display: 'block', paddingTop: 0 }}>
+          <blockquote className="project-quote">
+            "{p.quote.text}"
+            <cite>— {p.quote.attribution}</cite>
+          </blockquote>
+        </div>
       </div>
     </div>
   );
@@ -104,6 +129,7 @@ export default function PortfolioClient() {
   const marqueeItems = [...EXPERTISE_TAGS, ...EXPERTISE_TAGS];
   return (
     <>
+      {/* Hero */}
       <section className="hero">
         <div className="hero-orbit" aria-hidden>
           <span className="satellite" /><span className="satellite s2" />
@@ -125,19 +151,29 @@ export default function PortfolioClient() {
         </div>
       </section>
 
+      {/* Methodology */}
       <section className="section">
         <div className="container">
           <SectionHead
-            eyebrow="OUR AI PRODUCTS"
-            title={<>AI solutions, <span className="serif-italic">built in-house.</span></>}
-            lede="A growing suite of deployable, customisable AI products — built on real use cases, not demos."
+            eyebrow="HOW WE BUILD"
+            title={<>Senior thinking, <span className="serif-italic">shipped in slices.</span></>}
+            lede="We've found the same four-step rhythm gets the best results, whether the build is a custom ERP or a single AI agent."
           />
-          <div className="grid-4" style={{ gap: 20 }}>
-            {AI_PRODUCTS.map((p, i) => <ProductCard key={p.name} p={p} idx={i} />)}
+          <div className="methodology-grid">
+            {METHODOLOGY_STEPS.map((s, i) => (
+              <Reveal key={s.num} stagger={Math.min(i + 1, 4)}>
+                <div className="methodology-step">
+                  <span className="step-num">/ {s.num}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.desc}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Project Work */}
       <section className="section">
         <div className="container">
           <SectionHead
@@ -155,6 +191,7 @@ export default function PortfolioClient() {
         </div>
       </section>
 
+      {/* Expertise marquee */}
       <section className="section-tight" style={{ paddingBlock: 0 }}>
         <div className="container">
           <p className="eyebrow">WHAT WE'RE BUILT FROM</p>
@@ -170,6 +207,7 @@ export default function PortfolioClient() {
         </div>
       </section>
 
+      {/* CTA */}
       <section className="section">
         <div className="container center">
           <h2 className="h-section" style={{ maxWidth: '20ch', margin: '0 auto' }}>

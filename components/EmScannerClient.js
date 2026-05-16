@@ -178,7 +178,7 @@ export default function EmScannerClient() {
               Most businesses still <span className="serif-italic">run on paper.</span>
             </h2>
           </Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'start' }}>
+          <div className="two-col-50">
             <Reveal stagger={2}>
               <p className="lede" style={{ maxWidth: '52ch' }}>
                 Sales orders, delivery records, inspection forms — filled in by hand, stacked in folders, and manually re-entered into spreadsheets.
@@ -295,7 +295,7 @@ export default function EmScannerClient() {
         <div className="container">
           <div className="dark-card" style={{ position: 'relative', overflow: 'hidden' }}>
             <span className="glow" />
-            <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr auto', gap: 32, alignItems: 'center' }}>
+            <div className="cta-row" style={{ position: 'relative', zIndex: 1 }}>
               <div>
                 <p className="eyebrow">GET EM SCANNER</p>
                 <h2 className="h-section" style={{ maxWidth: '22ch', marginBottom: 16 }}>

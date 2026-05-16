@@ -252,7 +252,7 @@ export default function HomeClient({ latestInsight }) {
       </section>
 
       <section className="dark-section">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 32, alignItems: 'center', position: 'relative', zIndex: 2 }}>
+        <div className="container cta-row" style={{ position: 'relative', zIndex: 2 }}>
           <div>
             <p className="eyebrow">SPARK*</p>
             <h2 className="h-section" style={{ maxWidth: '20ch' }}>

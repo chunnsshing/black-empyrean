@@ -163,7 +163,7 @@ export default function MondayClient() {
               What <span className="serif-italic">Monday</span> does.
             </h2>
           </Reveal>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'start' }}>
+          <div className="two-col-50">
             <Reveal stagger={2}>
               <p className="lede" style={{ maxWidth: '52ch' }}>
                 Most leadership teams don't have time to pull reports before the week begins. They fly blind on Monday mornings — or spend the first hour chasing numbers across systems.
@@ -335,7 +335,7 @@ export default function MondayClient() {
         <div className="container">
           <div className="dark-card" style={{ position: 'relative', overflow: 'hidden' }}>
             <span className="glow" />
-            <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr auto', gap: 32, alignItems: 'center', flexWrap: 'wrap' }}>
+            <div className="cta-row" style={{ position: 'relative', zIndex: 1 }}>
               <div>
                 <p className="eyebrow">GET STARTED WITH MONDAY</p>
                 <h2 className="h-section" style={{ maxWidth: '22ch', marginBottom: 16 }}>

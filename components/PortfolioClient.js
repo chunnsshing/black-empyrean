@@ -81,6 +81,36 @@ const PROJECTS = [
   },
 ];
 
+const PORTFOLIO_PRODUCTS = [
+  {
+    slug: 'em-scanner',
+    name: 'EM Scanner',
+    tagline: 'Turn handwritten documents into structured Excel data. AI reads every field — no manual re-entry.',
+    category: 'Document AI',
+    tags: ['AI', 'OCR', 'Enterprise', 'Excel'],
+    platform: 'Windows · Mac',
+    status: 'available',
+  },
+  {
+    slug: null,
+    name: 'Coming Soon',
+    tagline: 'A new product is in development. Reach out if you want early access.',
+    category: '—',
+    tags: [],
+    platform: '—',
+    status: 'coming-soon',
+  },
+  {
+    slug: null,
+    name: 'Coming Soon',
+    tagline: 'A new product is in development. Reach out if you want early access.',
+    category: '—',
+    tags: [],
+    platform: '—',
+    status: 'coming-soon',
+  },
+];
+
 const EXPERTISE_TAGS = [
   'AI Agents', 'LLM Integration', 'ERP Development', 'Web & App Building',
   'Data Analytics', 'UI/UX Design', 'Cloud Infrastructure',
@@ -187,6 +217,47 @@ export default function PortfolioClient() {
                 <ProjectCard p={p} />
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Products */}
+      <section className="section">
+        <div className="container">
+          <SectionHead
+            eyebrow="OUR PRODUCTS"
+            title={<>Software we <span className="serif-italic">built and ship.</span></>}
+            lede="Products born from real client engagements — packaged, refined, and deployable for your organisation."
+          />
+          <div className="grid-3" style={{ gap: 24 }}>
+            {PORTFOLIO_PRODUCTS.map((p, i) => {
+              const isAvailable = p.status === 'available';
+              const card = (
+                <div className={'portfolio-product-card' + (isAvailable ? ' available' : ' coming-soon')}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+                    <span className="tag">{p.category}</span>
+                    {isAvailable
+                      ? <span className="muted-mono" style={{ color: 'var(--periwinkle)', fontSize: 11 }}>AVAILABLE</span>
+                      : <span className="muted-mono" style={{ fontSize: 11 }}>COMING SOON</span>}
+                  </div>
+                  <h3 className="h-card" style={{ marginBottom: 10 }}>{p.name}</h3>
+                  <p style={{ color: 'var(--ink-2)', fontSize: 14, lineHeight: 1.6, margin: 0, flex: 1 }}>{p.tagline}</p>
+                  {isAvailable && (
+                    <div style={{ marginTop: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ color: 'var(--ink-3)', fontSize: 12 }}>{p.platform}</span>
+                      <span style={{ color: 'var(--periwinkle)', fontSize: 13 }}>View details →</span>
+                    </div>
+                  )}
+                </div>
+              );
+              return (
+                <Reveal key={p.slug || `coming-${i}`} stagger={Math.min(i + 1, 3)} style={{ display: 'flex', flexDirection: 'column' }}>
+                  {isAvailable
+                    ? <Link href={`/portfolio/products/${p.slug}`} style={{ display: 'flex', flexDirection: 'column', flex: 1, textDecoration: 'none' }}>{card}</Link>
+                    : card}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
